@@ -9,10 +9,7 @@ public class Main{
             System.out.println(sistema.exibeMenu());
             System.out.print("Opção> ");
             opcao = sc.nextLine().trim().toUpperCase();
-            if (!opcao.equals("A") && !opcao.equals("M") && !opcao.equals("D") && !opcao.equals("S")){
-                System.out.println("OPÇÃO INVÁLIDA.");
-                continue;
-            }
+
             if (opcao.equals("A")){
                 System.out.print("Posição> ");
                 int posicao = Integer.parseInt(sc.nextLine());
@@ -28,11 +25,15 @@ public class Main{
                     System.out.print("Local> ");
                     String local = sc.nextLine();
                     System.out.println(sistema.adicionaFilme(posicao , nome, anoLancamento, local));
+                    continue;
                 }
             }
+
             if (opcao.equals("M")){
                 System.out.println(sistema.mostrarTodos());
+                continue;
             }
+
             if (opcao.equals("D")){
                 System.out.print("Posição> ");
                 int posicao = Integer.parseInt(sc.nextLine());
@@ -41,7 +42,31 @@ public class Main{
                     continue;
                 }
                 System.out.println(sistema.detalharFilme(posicao));
+                continue;
             }
+
+            if (opcao.equals("H")){
+                System.out.print("Filme> ");
+                int idF = Integer.parseInt(sc.nextLine());
+                System.out.print("Posição> ");
+                int idHL = Integer.parseInt(sc.nextLine());
+                System.out.println(sistema.adicionarHot(idF, idHL));
+                continue;
+            }
+
+            if (opcao.equals("R")){
+                System.out.print("Filme> ");
+                int idHL = Integer.parseInt(sc.nextLine());
+                sistema.removeHot(idHL);
+                continue;
+            }
+
+            if (opcao.equals("E")){
+                System.out.println(sistema.exibirHotList());
+                continue;
+            }
+
+            System.out.println("OPÇÃO INVÁLIDA.");
         }
     }
 }
